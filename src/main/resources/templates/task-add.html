@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>Добавьте задачи для проекта:</div>
+<form action="/tasks/add" method="post">
+  <fieldset>
+    <legend>Задача</legend>
+    <div class="form-control">
+      <label for="name">Автор задачи</label>
+      <input type="name" id="author" name="author" placeholder="Введите автора" required/>
+    </div>
+
+    <div class="form-control">
+      <label for="name">
+        <span>ID проекта</span>
+        <input id="board_id" name="board_id" placeholder="board_id" readonly th:value="${board.id}"/>
+      </label>
+    </div>
+
+    <div class="form-control">
+      <label for="name">Исполнитель задачи</label>
+      <input type="name" id="name" name="executor" placeholder="Введите исполнителя" required/>
+    </div>
+    <div class="form-control">
+      <label for="name">Время начала работ</label>
+      <input type="datetime-local" name="release_start"/>
+    </div>
+    <div class="form-control">
+      <label for="name">Время завершения работ</label>
+      <input type="datetime-local" name="release_end"/>
+    </div>
+
+    <input type="submit" value="Добавить" class="submit-btn"/>
+  </fieldset>
+</form>
+
+</body>
+</html>

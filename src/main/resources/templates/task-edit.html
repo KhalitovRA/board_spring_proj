@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>edit task</title>
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <h1>Редактирование задачи</h1>
+    <div th:each="el: ${task}">
+        <form method="post">
+            <fieldset>
+                <div class="form-control">
+                    <label for="name">Автор задачи</label>
+                    <input type="name" th:value="${el.author}" id="author" name="author" placeholder="Введите автора" required/>
+                </div>
+                <div class="form-control">
+                    <label for="name">
+                        <span>ID проекта</span>
+                        <input id="board_id" name="board_id" placeholder="board_id" readonly th:value="${el.board.getId()}"/>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="name">Исполнитель задачи</label>
+                    <input type="name" th:value="${el.executor}"  id="name" name="executor" placeholder="Введите исполнителя" required/>
+                </div>
+                <div class="form-control">
+                    <label for="name">Время начала работ</label>
+                    <input type="datetime-local" th:value="${el.release_start}"  name="release_start"/>
+                </div>
+                <div class="form-control">
+                    <label for="name">Время завершения работ</label>
+                    <input type="datetime-local" th:value="${el.release_end}" name="release_end"/>
+                </div>
+
+                <input type="submit" value="Обновить" class="submit-btn"/>
+                <input type="submit" value="Удалить задачу" th:href="@{'/task/' + ${el.id} + '/delete'}" class="submit-btn"/>
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

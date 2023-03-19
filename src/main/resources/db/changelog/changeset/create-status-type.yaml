@@ -1,0 +1,6 @@
+#databaseChangeLog:
+#  - changeSet:
+#      id: create-type
+#      author: KhalitovRA
+#      changes:
+#        - sql: CREATE TYPE status AS ENUM ('BACKLOG', 'IN_PROGRESS', 'DONE') IF NOT EXISTS

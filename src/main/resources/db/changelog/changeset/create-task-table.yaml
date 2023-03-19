@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-task
+      author: KhalitovRA
+      changes:
+        - createTable:
+            tableName: task
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: author
+                  type: varchar(150)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: executor
+                  type: varchar(150)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: release_start
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: release_end
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: board_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: board_task_fk
+                    referencedTableName: board
+                    referencedColumnNames: id
+              - column:
+                  name: status
+                  type: varchar(15)
+                  defaultValue: "IN_PROGRESS"

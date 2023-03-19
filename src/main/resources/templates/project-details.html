@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> project Detail</title>
+</head>
+<body>
+<div class="container mt-5">
+    <div th:each="el: ${board}" class="alert alert into mt-2">
+        <h1 th:text="${el.title}" />
+<!--TODO: сделать кнопку редактирования и удаления и обработчики-->
+    </div>
+    <div th:each="task: ${tasks}">
+<!--TODO: сделать ссылку и обработчик на задачи по проекту, написать шаблон, где можно удалить и изменить задачу -->
+<a th:text="${task.getAuthor()}" th:href="@{'/task/' + ${task.id} + '/edit'}"></a>
+<!--        th:href="@{'/projects/' + ${el.getId()}}"    -->
+    </div>
+    <a href="/tasks/add" th:value="${board.getId()}">Добавить задачу</a>
+</div>
+</body>
+</html>

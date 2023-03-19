@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>create tasks</title>
+</head>
+<body>
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: cursive;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 5px;
+        outline: none;
+    }
+
+    label {
+        line-height: 1.9rem;
+    }
+
+    input[type="submit"] {
+        transform: translate(2.2%);
+        padding: 3px;
+        margin-top: 0.6rem;
+        font-family: cursive;
+        font-weight: bold;
+    }
+
+    fieldset {
+        padding: 20px 40px;
+    }
+    label span{
+        display: block;
+    }
+</style>
+<!--<label for="name">Project name (4 to 20 characters):</label>-->
+
+<!--<input type="text" id="name" name="name" required-->
+<!--       minlength="4" maxlength="20" size="10">-->
+<!--<form action="/targetPage.html" method="GET">-->
+<!--    <input name="kek" hidden>-->
+<!--    <input type="text" name="results" value=""> // здесь нужно будет ввести текст-->
+<!--</form>-->
+
+
+<p id='hello'></p>
+<div>
+    <h1>Название проекта:</h1>
+    <h1 th:text="${board.title}"/>
+</div>
+
+<div>Добавьте задачи для проекта:</div>
+<form action="/tasks/add" method="post">
+    <fieldset>
+        <legend>Задача</legend>
+        <div class="form-control">
+            <label for="name">Автор задачи</label>
+            <input type="name" id="author" name="author" placeholder="Введите автора" required/>
+        </div>
+
+        <div class="form-control">
+            <label for="name">
+                <span>ID проекта</span>
+            <input id="board_id" name="board_id" placeholder="board_id" readonly th:value="${board.id}"/>
+            </label>
+        </div>
+
+        <div class="form-control">
+            <label for="name">Исполнитель задачи</label>
+            <input type="name" id="name" name="executor" placeholder="Введите исполнителя" required/>
+        </div>
+        <div class="form-control">
+            <label for="name">Время начала работ</label>
+            <input type="datetime-local" name="release_start"/>
+        </div>
+        <div class="form-control">
+            <label for="name">Время завершения работ</label>
+            <input type="datetime-local" name="release_end"/>
+        </div>
+
+        <input type="submit" value="Добавить" class="submit-btn"/>
+    </fieldset>
+</form>
+</body>
+</html>

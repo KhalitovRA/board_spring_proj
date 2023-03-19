@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все проекты</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Проекты</h1>
+    <div th:each="el : ${ boards }" class="alert alert-info mt-2">
+        <a th:text="${ el.getTitle() } " th:href="@{'/projects/' + ${el.getId()}}"/>
+    </div>
+</div>
+<!--<p align='left'>-->
+<!--    <input type='text' size='25' id='nametxt'/>-->
+<!--    <input type='button' value='Создать' onClick='transfer()'/>-->
+<!--</p>-->
+<div class="container mt-5">
+    <form action="/projects/add" method="POST">
+        <input name="kek" hidden>
+        <input type="text" name="title" value="">
+        <button type="submit" class="btn btn-success">Создать проект</button>
+    </form>
+</div>
+<!--<script>-->
+<!--    function transfer() {-->
+<!--        var s = document.getElementById('nametxt').value;-->
+<!--        if (s == '') {-->
+<!--            alert('Введите имя');-->
+<!--            return;-->
+<!--        }-->
+<!--        localStorage.setItem('name', s);-->
+<!--        window.location.href = '/projects/add';-->
+<!--    }-->
+<!--</script> -->
+</body>
+</html>
